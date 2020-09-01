@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "*",
+    "browserify": "*"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
