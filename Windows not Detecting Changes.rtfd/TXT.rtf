@@ -1,0 +1,393 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 HelveticaNeue-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Monaco;\f4\fnil\fcharset0 HelveticaNeue-Italic;\f5\fnil\fcharset0 Menlo-Italic;
+\f6\froman\fcharset0 Times-Roman;\f7\froman\fcharset0 Times-Bold;\f8\froman\fcharset0 Times-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red31\green36\blue45;\red255\green255\blue255;\red228\green58\blue65;
+\red239\green240\blue242;\red63\green69\blue80;\red162\green70\blue22;\red13\green100\blue126;\red60\green184\blue123;
+\red0\green0\blue0;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c16078\c18824\c23137;\cssrgb\c100000\c100000\c100000;\cssrgb\c92549\c32157\c32157;
+\cssrgb\c94902\c95294\c96078;\cssrgb\c31373\c34118\c38824;\cssrgb\c70196\c35294\c10588;\cssrgb\c0\c46667\c56863;\cssrgb\c27451\c76078\c55686;
+\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid1\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid101\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid201\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid301\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid401\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid501\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid601\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}
+{\list\listtemplateid8\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}.}{\leveltext\leveltemplateid701\'01.;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid8}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+This note will cover a variety of different fixes for volumes issues and file watchers not updating changes. The example commands have been tested and confirmed to be accurate as of this writing. Each terminal will require a slightly different syntax for the pwd (present working directory) variable.\
+\pard\pardeftab720\sl520\sa210\partightenfactor0
+
+\f1\b\fs48 \cf2 Windows Home with Docker Toolbox
+\f0\b0 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\fs36 \cf2 1. Pass the container the environment variable with fix directly in the docker run command (recommended):\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 -e CHOKIDAR_USEPOLLING=true
+\f0\fs36 \cf2 \cb3 \
+or\
+2. Create a\'a0
+\f1\b .env
+\f0\b0 \'a0file in the project root with the following inside of it:\
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 CHOKIDAR_USESPOLLING=true
+\f0\fs36 \cf2 \cb3 \
+Working example commands for each terminal (be sure to run these commands in the root of your project directory)\
+
+\f1\b Docker Quickstart (recommended)
+\f0\b0 \
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 docker run -it -p 3000:3000 -v /app/node_modules -v $\{PWD\}:/app -e CHOKIDAR_USEPOLLING=true IMAGE_ID
+\f0\fs36 \cf2 \cb3 \
+
+\f1\b GitBash
+\f0\b0 \
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 winpty docker run -it -p 3000:3000 -v /app/node_modules -v "/$(PWD)":/app -e CHOKIDAR_USEPOLLING=true IMAGE_ID
+\f0\fs36 \cf2 \cb3 \
+
+\f1\b PowerShell
+\f0\b0 \
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 docker run -it -p 3000:3000 -v /app/node_modules -v /c/Users/username/frontend:/app -e CHOKIDAR_USEPOLLING=true IMAGE_ID
+\f0\fs36 \cf2 \cb3 \
+Note:\'a0Currently, using the full path to your project directory is the only thing that seems to properly mount the volume. Please remember to replace your current working directory with what is shown in the command above.\
+
+\f1\b VirtualBox Folder Sharing
+\f0\b0 \
+By default, VirtualBox will share the C:\\Users directory. If you are using an external or network drive or some other drive on your machine such as D:\\ or F:\\ it will not be shared and your volumes not be mounted properly.\
+Please make sure that the drive you are using has been shared by opening VirtualBox and clicking on "Settings", then "Shared Folders".\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f1\b\fs36 \cf2 \cb3 Windows Defender, Firewalls and Anti-Virus
+\f0\b0 \
+Any of these services could possibly conflict with the volume mounting. When in doubt, disable each service one by one to see if the volumes begin working correctly.\
+\pard\pardeftab720\sl520\sa210\partightenfactor0
+
+\f1\b\fs48 \cf2 Windows Pro with Docker Desktop
+\f0\b0 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\fs36 \cf2 If you are using Windows and Docker Desktop v2.2 or higher and the latest Create React App v3.4.1, most of the file watching issues have been resolved. If you are using a version of Docker Desktop older than version v2.2 you should update to the latest version.\
+Working example commands for each terminal (be sure to run these commands in the root of your project directory)\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f1\b \cf2 GitBash
+\f0\b0 \
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 winpty docker run -it -p 3000:3000 -v /app/node_modules -v "/$(PWD)":/app CONTAINER_ID
+\f0\fs36 \cf2 \cb3 \
+
+\f1\b PowerShell
+\f0\b0 \
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 docker run -it -p 3000:3000 -v /app/node_modules -v $\{pwd\}:/app CONTAINER_ID
+\f0\fs36 \cf2 \cb3 \
+
+\f1\b Docker Desktop File Sharing
+\f0\b0 \
+By default, your C:\\ will be shared with Docker Desktop for volume mounting. If you are using an external or network drive or some other drive on your machine such as D:\\ or F:\\ it will not be shared and your volumes not be mounted properly.\
+Please make sure that the drive you are using has been shared by clicking Docker icon in the systray. Click "Settings", then "Resources" and finally "File Sharing".\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f1\b\fs36 \cf2 \cb3 Windows Defender, Firewalls and Anti-Virus
+\f0\b0 \
+Any of these services could possibly conflict with the volume mounting. When in doubt, disable each service one by one to see if the volumes begin working correctly.\
+\
+Recently, a bug was introduced with the latest Create\'a0React App version that is causing the React app to exit when starting with Docker Compose.\
+To Resolve this:\
+
+\f1\b Add stdin_open property to your docker-compose.yml file
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls1\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  web:\cf6 \cb1 \
+\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+    stdin_open: \cf7 true\cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 Make sure you rebuild your containers after making this change with\'a0\'a0
+\f2\fs32\fsmilli16200 \cf4 \cb5 docker-compose down\'a0&& docker-compose up --build
+\f0\fs36 \cf2 \cb3 \
+\
+If you are using any version of Windows and your React app is not automatically reloading after a code change, you can add this environment variable to your compose file:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls2\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+services:\cf6 \cb1 \
+\ls2\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  web:\cf6 \cb1 \
+\ls2\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+    environment:\cf6 \cb1 \
+\ls2\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+      - CHOKIDAR_USEPOLLING=\cf7 true\cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \
+\
+If you are using Windows Home you may have noticed that when adding a test or making a change to the App.test.js the tests are not re-running inside the container.\
+While this works on macOS (and likely Linux), Jest watchers seem to be completely broken on certain versions of Windows. We are looking into a potential fix or hack to get this working again and will update this note if we find one.\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f1\b \cf2 Note
+\f0\b0 \'a0- Since the latest release of Create React App and Docker Desktop v2.2 this does not appear to be an issue for Windows Pro or Enterprise users.\
+\
+\
+Due to a change in how the Jest library works with Create React App, we need to make a small modification:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls3\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+script:\cf6 \cb1 \
+\ls3\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  - docker run USERNAME/docker-react npm run test -- --coverage\cf6 \cb1 \
+\ls3\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+\'a0\cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 instead should be:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls4\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+script:\cf6 \cb1 \
+\ls4\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  - docker run -e CI=\cf7 true\cf2  USERNAME/docker-react npm run test\cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 Additionally, you may want to set the following property to the top of your .travis.yml file:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls5\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+language: \cf7 generic\cf2  \cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \
+\
+There is a slight change that will be required, otherwise you will get an error when Travis attempts to run your code.\
+The code will now look like this:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls6\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+access_key_id: $AWS_ACCESS_KEY\cf6 \cb1 \
+\ls6\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+secret_access_key: $AWS_SECRET_KEY\cf6 \cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls6\ilvl0\cf6 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+\
+\pard\tx566\pardeftab720\sl340\partightenfactor0
+\cf6 \
+\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 If you still see a failed deployment, try the following fixes:\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f1\b \cf2 1) Use an Unnamed Builder
+\f0\b0 \
+Currently, there seems to be a bug with Elasticbeanstalk and the multi-stage builder step is failing. If you pull the AWS\'a0logs, you will see:\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f4\i \cf2 "docker pull" requires exactly 1 argument
+\f0\i0 \
+The quick fix will be to use an unnamed builder, rather than a named builder:\
+
+\f4\i By default, the stages are not named, and you refer to them by their integer number, starting with 0 for the first\'a0
+\f5\fs32\fsmilli16200 \cf4 \cb5 FROM
+\f4\fs36 \cf2 \cb3 \'a0instruction.\cb1 \uc0\u8232 {\field{\*\fldinst{HYPERLINK "https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages"}}{\fldrslt 
+\f0\i0 \cf8 \cb3 https://docs.docker.com/develop/develop-images/multistage-build/#name-your-build-stages}}
+\f0\i0 \cb3 \
+The Dockerfile would now look like this:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls7\ilvl0
+\f3\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  FROM node:alpine\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  WORKDIR \cf9 '/app'\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  COPY \cf7 package\cf2 *.json ./\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  RUN npm install\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  COPY . .\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  RUN npm run build\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+\'a0\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  FROM nginx\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  EXPOSE 80\cf6 \cb1 \
+\ls7\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+  COPY --\cf7 from\cf2 =0 /app/build /usr/share/nginx/html\cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f1\b\fs36 \cf2 \cb3 2)\'a0Upgrade to t2small instance
+\f0\b0 \
+The\'a0
+\f2\fs32\fsmilli16200 \cf4 \cb5 npm install
+\f0\fs36 \cf2 \cb3 \'a0command frequently times out on the t2.micro instance that we are using.\'a0 An easy fix is to bump up the instance type that Elastic Beanstalk is using to a t2.small.\
+Note that a t2.small is outside of the free tier, so you will pay a tiny bit of money (likely less than one dollar if you leave it running for a few hours) for this instance.\'a0 Don't forget to close it down!\'a0 Directions for this are a few videos ahead in the lecture titled 'Environment Cleanup'.\
+
+\f1\b 3) Refactor COPY\'a0line
+\f0\b0 \
+Try editing the 'COPY' line of your Dockerfile like so:\
+
+\f2\fs32\fsmilli16200 \cf4 \cb5 COPY package*.json ./
+\f0\fs36 \cf2 \cb3 \
+Sometimes AWS has a tough time with the '.' folder designation and prefers the long form\'a0
+\f2\fs32\fsmilli16200 \cf4 \cb5 ./\
+\
+\
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f6\fs36 \cf10 \cb3 Tested with the new Platform without issue: Docker running on 64bit Amazon Linux 2/3.0.3\cb1 \
+
+\f7\b \cb3 Initial Setup
+\f6\b0 \cb1 \
+\cb3 1. Go to AWS Management Console\cb1 \
+\cb3 2. Search for Elastic Beanstalk in "Find Services"\cb1 \
+\cb3 3. Click the "Create Application" button\cb1 \
+\cb3 4. Enter "docker" for the Application Name\cb1 \
+\cb3 5. Scroll down to "Platform" and select "Docker" from the dropdown list. Leave the rest as defaults.\cb1 \
+\cb3 6. Click "Create Application"\cb1 \
+\cb3 7. You should see a green checkmark after some time.\cb1 \
+\cb3 8. Click the link above the checkmark for your application. This should open the application in your browser and display a Congratulations message.\cb1 \
+
+\f7\b \cb3 Change from Micro to Small instance type:
+\f6\b0 \cb1 \
+
+\f8\i \cb3 Note that a t2.small is outside of the free tier. t2 micro has been known to timeout and fail during the build process.
+\f6\i0 \cb1 \
+\cb3 1. In the left sidebar under Docker-env click "Configuration"\cb1 \
+\cb3 2. Find "Capacity" and click "Edit"\cb1 \
+\cb3 3. Scroll down to find the "Instance Type" and change from\'a0
+\f8\i t2.micro
+\f6\i0 \'a0to\'a0
+\f8\i t2.small
+\f6\i0 \cb1 \
+\cb3 4. Click "Apply"\cb1 \
+\cb3 5. The message might say "No Data" or "Severe" in Health Overview before changing to "Ok"\cb1 \
+
+\f7\b \cb3 Add AWS configuration details to .travis.yml file's deploy script
+\f6\b0 \cb1 \
+\cb3 1. Set the\'a0
+\f8\i region
+\f6\i0 . The region code can be found by clicking the region in the toolbar next to your username.\cb1 \
+\cb3 eg: 'us-east-1'\cb1 \
+\cb3 2.\'a0
+\f8\i app
+\f6\i0 \'a0should be set to the Application Name (Step #4 in the Initial Setup above)\cb1 \
+\cb3 eg:\'a0'docker'\cb1 \
+\cb3 3.\'a0
+\f8\i env
+\f6\i0 \'a0should be set to the lower case of your Beanstalk Environment name.\cb1 \
+\cb3 eg: 'docker-env'\cb1 \
+\cb3 4. Set the\'a0
+\f8\i bucket_name
+\f6\i0 . This can be found by searching for the S3 Storage service. Click the link for the elasticbeanstalk bucket that matches your region code and copy the name.\cb1 \
+\cb3 eg: 'elasticbeanstalk-us-east-1-923445599289'\cb1 \
+\cb3 5. Set the\'a0
+\f8\i bucket_path
+\f6\i0 \'a0to 'docker'\cb1 \
+\cb3 6. Set\'a0
+\f8\i access_key_id
+\f6\i0 \'a0to $AWS_ACCESS_KEY\cb1 \
+\cb3 7. Set\'a0
+\f8\i secret_access_key
+\f6\i0 \'a0to $AWS_SECRET_KEY\cb1 \
+
+\f7\b \cb3 Create an IAM User
+\f6\b0 \cb1 \
+\cb3 1. Search for the "IAM Security, Identity & Compliance Service"\cb1 \
+\cb3 2. Click "Create Individual IAM Users" and click "Manage Users"\cb1 \
+\cb3 3. Click "Add User"\cb1 \
+\cb3 4. Enter any name you\'92d like in the "User Name" field.\cb1 \
+\cb3 eg: docker-react-travis-ci\cb1 \
+\cb3 5. Tick the "Programmatic Access" checkbox\cb1 \
+\cb3 6. Click "Next:Permissions"\cb1 \
+\cb3 7. Click "Attach Existing Policies Directly"\cb1 \
+\cb3 8. Search for "beanstalk"\cb1 \
+\cb3 9. Tick the box next to "AWSElasticBeanstalkFullAccess"\cb1 \
+\cb3 10. Click "Next:Tags"\cb1 \
+\cb3 11. Click "Next:Review"\cb1 \
+\cb3 12. Click "Create user"\cb1 \
+\cb3 13. Copy and / or download the\'a0
+\f8\i Access Key ID
+\f6\i0 \'a0and\'a0
+\f8\i Secret Access Key
+\f6\i0 \'a0to use in the Travis Variable Setup.\cb1 \
+
+\f7\b \cb3 Travis Variable Setup
+\f6\b0 \cb1 \
+\cb3 1. Go to your Travis Dashboard and find the project repository for the application we are working on.\cb1 \
+\cb3 2. On the repository page, click "More Options" and then "Settings"\cb1 \
+\cb3 3. Create an\'a0
+\f8\i AWS_ACCESS_KEY
+\f6\i0 \'a0variable and paste your IAM access key from step #13 above.\cb1 \
+\cb3 4. Create an\'a0
+\f8\i AWS_SECRET_KEY
+\f6\i0 \'a0variable and paste your IAM secret key from step #13 above.\cb1 \
+
+\f7\b \cb3 Deploying App
+\f6\b0 \cb1 \
+\cb3 1. Make a small change to your src/App.js file in the greeting text.\cb1 \
+\cb3 2. In the project root, in your terminal run:\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls8\ilvl0
+\f3\fs24 \cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+git add.\cf6 \cb1 \
+\ls8\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+git commit -m \'93testing deployment\cf9 "\cf6 \cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\partightenfactor0
+\ls8\ilvl0\cf9 \cb3 \kerning1\expnd0\expndtw0 {\listtext	.	}\expnd0\expndtw0\kerning0
+git push origin master\cf6 \cb1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f6\fs36 \cf10 \cb3 3. Go to your Travis Dashboard and check the status of your build.\cb1 \
+\cb3 4. The status should eventually return with a green checkmark and show "build passing"\cb1 \
+\cb3 5. Go to your AWS Elasticbeanstalk application\cb1 \
+\cb3 6. It should say "Elastic Beanstalk is updating your environment"\cb1 \
+\cb3 7. It should eventually show a green checkmark under "Health". You will now be able to access your application at the external URL provided under the environment name.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf10 \
+\pard\pardeftab720\sl400\qc\partightenfactor0
+
+\f1\b\fs30 \cf2 \
+
+\f7 \cf10 \
+\pard\pardeftab720\partightenfactor0
+
+\f6\b0\fs24 \cf10 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\fs40 \cf10 \cb11 \kerning1\expnd0\expndtw0 \CocoaLigature0 docker run -it -p 8000:3000 -v /Users/anmolrajarora/google\\ drive/work/2020/devops/frontend:/app <image_id>\
+\
+docker run -it -p 8000:3000 -v \'93path till frontend directory\'94:/app <image_id>\
+\
+docker run -it -p 8000:3000 -v /app/node_modules -v "$(pwd)":/app <image_id>
+\f6\fs24 \cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \
+\pard\tx566\pardeftab720\sl340\partightenfactor0
+
+\f3\fs24 \cf6 \cb1 \
+}
