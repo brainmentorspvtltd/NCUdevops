@@ -9,4 +9,4 @@ spec:
     - name: client
       image: anmolrajarora/multi-client
       ports:
-        - containerPort: 3000
+        - containerPort: 80
